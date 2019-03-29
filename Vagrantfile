@@ -2,6 +2,7 @@
 Vagrant.configure("2") do |config|
   config.vbguest.iso_path = "#{ENV['HOME']}/Downloads/VBoxGuestAdditions_6.0.0.iso"
   config.vbguest.no_remote = true
+  config.vbguest.auto_update=false
 
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
@@ -28,7 +29,7 @@ Vagrant.configure("2") do |config|
     apt-get update --quiet --assume-yes
     apt-get upgrade --quiet --assume-yes
 
-#    #Virtualbox v6.0
+    #Virtualbox v6.0
     wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
     wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | apt-key add -
     add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
@@ -46,7 +47,10 @@ Vagrant.configure("2") do |config|
   SHELL
 
   config.vm.provision "shell", privileged: false, inline: <<-SHELL
-    cd /vagrant
+    cd /home/vagrant
+    git clone https://github.com/seretol/sanger-pathogen-singularity
+    cd sanger-pathogen-singularity
     ./build_images.py
+    cp *.simg /vagrant
   SHELL
 end
