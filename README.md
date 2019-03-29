@@ -18,7 +18,13 @@ The focus is to build in an automated fashion an image for our most used softwar
 
 The current implementation leverages conda as much as possible and uses Jinja2 templates to generate the singularity recipes
 
-## Run under vagrant
+## Building the images
+### Requirements
+The following must be available:
+   * vagrant
+   * vagrant vbguest plugin: ``` vagrant plugin install vagrant-vbguest ```
+
+### Running under vagrant
 The below command will build a box with all dependencies required to build images.  It will then build images for each of the required software
 ```
 vagrant up

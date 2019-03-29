@@ -1,0 +1,4 @@
+*.log
+*.simg
+*.recipe
+.vagrant/

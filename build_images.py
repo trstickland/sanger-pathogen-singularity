@@ -34,7 +34,7 @@ rm /tmp/GatkInstall-3.8-1.tar.bz2
         ]
 for (software, version, pre_install_instructions, post_install_instruction) in conda_based_installs:
     recipe = software + '-' + version + '.recipe'
-    image = software + '-' + version + '.img'
+    image = software + '-' + version + '.simg'
     with open(recipe, 'w') as recipe_file:
         print(template.render(name=software, version=version, preinstall=pre_install_instructions, postinstall=post_install_instruction), file=recipe_file)
     subprocess.run(["rm", "-f", image]) 
