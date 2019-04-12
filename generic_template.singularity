@@ -1,5 +1,5 @@
 BootStrap: docker
-From: continuumio/miniconda
+From: {{docker_image}}
 
 %runscript
 # Execution
@@ -14,16 +14,10 @@ fi
 %environment
 # Register usage
 [ -f /tracking/container_usage.csv ] && echo `whoami`,`date '+%Y%m%d_%H%M%S'`,{{name}}-{{version}} >> /tracking/container_usage.csv
-export PATH=/opt/conda/bin:${PATH}
+{{environment}}
 
 %post
-{{preinstall}}
-apt-get install -y --quiet man-db
-/opt/conda/bin/conda update -y conda
-/opt/conda/bin/conda update -y --all
-/opt/conda/bin/conda install -c sanger-pathogens -c conda-forge -c bioconda -c defaults -y {{name}}={{version}}
-{{postinstall}}
-/opt/conda/bin/conda clean --all -y
+{{install}}
 
 %help
 Singularity image for {{name}} version {{version}}.

@@ -1,0 +1,127 @@
+- name: iqtree
+  version: 1.6.10=he860b03_0
+  template: conda_template.singularity
+- name: raxml-ng
+  version: 0.8.1
+  template: generic_template.singularity
+  docker_image: ubuntu:18.04
+  environment: |+
+    export PATH=/opt/raxml-ng:${PATH}
+  install: |+
+    apt-get update --quiet --assume-yes
+    apt-get upgrade --quiet --assume-yes
+    apt-get install --quiet --assume-yes zip
+    apt-get install --quiet --assume-yes wget
+    mkdir /opt/raxml-ng
+    chmod 755 /opt/raxml-ng
+    cd /opt/raxml-ng
+    wget -q https://github.com/amkozlov/raxml-ng/releases/download/0.8.1/raxml-ng_v0.8.1_linux_x86_64.zip -O /opt/raxml-ng/raxml-ng_v0.8.1_linux_x86_64.zip
+    unzip raxml-ng_v0.8.1_linux_x86_64.zip
+    rm raxml-ng_v0.8.1_linux_x86_64.zip
+- name: piggy
+  version: "1.4"
+  template: generic_template.singularity
+  docker_image: ubuntu:18.04
+  environment: |+
+    export PATH=/opt/piggy-1.4:/opt/piggy-1.4/bin:${PATH}
+  install: |+
+    apt-get update --quiet --assume-yes
+    apt-get upgrade --quiet --assume-yes
+    apt-get install --no-install-recommends -q -y zip wget roary git r-cran-plyr r-cran-ggplot2 r-cran-reshape2 r-cran-xml2 libcairo2-dev build-essential
+    Rscript -e 'source("https://bioconductor.org/biocLite.R"); biocLite(c("cowplot", "ggiraph"))'
+    mkdir -p /opt
+    chmod 755 /opt
+    wget -q https://github.com/harry-thorpe/piggy/archive/v1.4.zip -O /opt/v1.4.zip
+    cd /opt
+    unzip v1.4.zip
+    rm v1.4.zip
+- name: fasttree
+  version: 2.1.10=h470a237_2
+  template: conda_template.singularity
+- name: beast
+  version: 1.8.4=0
+  template: conda_template.singularity
+  preinstall: |+
+    apt-get install -q -y libxtst6 libfontconfig1 xauth
+- name: beast2
+  version: 2.5.0=hf1b8bbb_0
+  template: conda_template.singularity
+  preinstall: |+
+    apt-get install -q -y libxtst6 libfontconfig1 xauth
+- name: minimap2
+  version: 2.16=h84994c4_1
+  template: conda_template.singularity
+- name: canu
+  version: 1.8=pl526h470a237_0
+  template: conda_template.singularity
+- name: clonalframeml
+  version: 1.11=h470a237_1
+  template: conda_template.singularity
+- name: gubbins
+  version: 2.3.4=py36ha92aebf_0
+  template: conda_template.singularity
+- name: samtools
+  version: 1.9=h91753b0_8
+  template: conda_template.singularity
+- name: bwa
+  version: 0.7.17=pl5.22.0_2
+  template: conda_template.singularity
+- name: prank
+  version: v.170427=h6bb024c_2
+  template: conda_template.singularity
+- name: hmmer
+  version: 3.2.1=hfc679d8_0
+  template: conda_template.singularity
+- name: smalt
+  version: 0.7.6=1
+  template: conda_template.singularity
+- name: spades
+  version: 3.13.0=0
+  template: conda_template.singularity
+- name: ska
+  version: 1.0=he860b03_0
+  template: conda_template.singularity
+- name: srst2
+  version: 0.2.0=py27_3
+  template: conda_template.singularity
+- name: poppunk
+  version: 1.1.5=py_0
+  template: conda_template.singularity
+- name: pyseer
+  version: 1.2.0=py_0
+  template: conda_template.singularity
+- name: mafft
+  version: 7.407=1
+  template: conda_template.singularity
+- name: blast
+  version: 2.7.1=h96bfa4b_5
+  template: conda_template.singularity
+- name: snp-sites
+  version: 2.4.1=ha92aebf_0
+  template: conda_template.singularity
+- name: seroba
+  version: 1.0.0=py36_1
+  template: conda_template.singularity
+- name: roary
+  version: 3.12.0=pl526h470a237_1
+  template: conda_template.singularity
+- name: perl-bio-mlst-check
+  version: 2.1.1706216
+  template: generic_template.singularity
+  docker_image: sangerpathogens/mlst_check
+  environment: |+
+    export MLST_DATABASES=/MLST_databases
+- name: sling
+  version: fe8f273
+  template: flexi_conda_template.singularity
+  conda_install: |+
+    /opt/conda/bin/conda install -y python=2.7.13=hfff3488_13
+    /opt/conda/bin/conda install -y pip=19.0.3=py27_0
+    /opt/conda/bin/conda install -c bioconda -c conda-forge -y hmmer=3.1b2=3
+    /opt/conda/bin/conda install -c bioconda -c conda-forge -y blast=2.6.0=boost1.64_2
+    /opt/conda/bin/pip install git+https://github.com/ghoresh11/sling.git@fe8f273
+- name: pairsnp
+  version: 0.0.1=h6dfff17_0
+  template: flexi_conda_template.singularity
+  conda_install: |+
+    /opt/conda/bin/conda install -y -c gtonkinhill -c bioconda -c conda-forge pairsnp=0.0.1=h6dfff17_0
