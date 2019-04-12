@@ -15,6 +15,7 @@ The focus is to build in an automated fashion an image for our most used softwar
    * picard 2.18.27
    * vcftools 0.1.16
    * gatk 3.8
+
 These are stored in sanger.yml   
 
 The current implementation leverages conda as much as possible and uses Jinja2 templates to generate the singularity recipes   
