@@ -42,11 +42,12 @@
   version: 1.8.4=0
   template: conda_template.singularity
   preinstall: |+
-    apt-get install -q -y libxtst6
-    apt-get install -q -y xauth
+    apt-get install -q -y libxtst6 libfontconfig1 xauth
 - name: beast2
-  version: 2.5.0=f1b8bbb_0
+  version: 2.5.0=hf1b8bbb_0
   template: conda_template.singularity
+  preinstall: |+
+    apt-get install -q -y libxtst6 libfontconfig1 xauth
 - name: minimap2
   version: 2.16=h84994c4_1
   template: conda_template.singularity
