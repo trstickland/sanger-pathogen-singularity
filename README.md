@@ -15,9 +15,11 @@ The focus is to build in an automated fashion an image for our most used softwar
    * picard 2.18.27
    * vcftools 0.1.16
    * gatk 3.8
+These are stored in sanger.yml   
 
-The current implementation leverages conda as much as possible and uses Jinja2 templates to generate the singularity recipes
+The current implementation leverages conda as much as possible and uses Jinja2 templates to generate the singularity recipes   
 
+A secondary focus is to build a set of images required by our first farm4 user.  These are stored in gerry.yml
 ## Building the images
 ### Requirements
 The following must be available:
@@ -28,7 +30,20 @@ The following must be available:
 The below command will build a box with all dependencies required to build images.  It will then build images for each of the required software
 ```
 vagrant up
+vagrant ssh
+cd sanger-pathogen-singularity
+./build_images.py <definition file.yml> [software to build]
 ```
+
+Examples:   
+To build all images for gerry
+```
+./build_images.py gerry.yml
+```
+To build beast2 and samtools for gerry
+```
+./build_images.py gerry.yml beast2 samtools
+```   
 
 ## License
 sanger-pathogen-singularity is free software, licensed under [GPLv3](https://github.com/seretol/sanger-pathogen-singularity/blob/master/LICENSE).

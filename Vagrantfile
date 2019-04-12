@@ -50,7 +50,6 @@ Vagrant.configure("2") do |config|
     cd /home/vagrant
     git clone https://github.com/seretol/sanger-pathogen-singularity
     cd sanger-pathogen-singularity
-    ./build_images.py
-    cp *.simg /vagrant
+    echo Ready to build images from `pwd`...
   SHELL
 end

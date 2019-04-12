@@ -1,0 +1,35 @@
+- name: samtools
+  version: "1.9"
+  template: conda_template.singularity
+- name: bcftools
+  version: "1.9"
+  template: conda_template.singularity
+- name: bedtools
+  version: 2.27.1
+  template: conda_template.singularity
+- name: bwa
+  version: 0.7.17
+  template: conda_template.singularity
+- name: fastqc
+  version: 0.11.8
+  template: conda_template.singularity
+  preinstall: |+ 
+    apt-get install -q -y libxtst6
+    apt-get install -q -y xauth
+- name: picard
+  version: 2.18.27
+  template: conda_template.singularity
+  preinstall: |+
+    apt-get clean && apt-get update && apt-get install -y locales
+    echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+    locale-gen en_US.UTF-8
+- name: vcftools
+  version: 0.1.16
+  template: conda_template.singularity
+- name: gatk
+  version: "3.8"
+  template: conda_template.singularity
+  postinstall: |+
+    wget -q 'https://software.broadinstitute.org/gatk/download/auth?package=GATK-archive&version=3.8-1-0-gf15c1c3ef' -O /tmp/GatkInstall-3.8-1.tar.bz2
+    /opt/conda/bin/gatk3-register /tmp/GatkInstall-3.8-1.tar.bz2
+    rm /tmp/GatkInstall-3.8-1.tar.bz2

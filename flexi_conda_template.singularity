@@ -17,12 +17,10 @@ fi
 export PATH=/opt/conda/bin:${PATH}
 
 %post
-{{preinstall}}
 apt-get install -y --quiet man-db
 /opt/conda/bin/conda update -y conda
 /opt/conda/bin/conda update -y --all
-/opt/conda/bin/conda install -c sanger-pathogens -c conda-forge -c bioconda -c defaults -y {{name}}={{version}}
-{{postinstall}}
+{{conda_install}}
 /opt/conda/bin/conda clean --all -y
 
 %help
