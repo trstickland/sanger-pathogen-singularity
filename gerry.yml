@@ -18,6 +18,44 @@
     wget -q https://github.com/amkozlov/raxml-ng/releases/download/0.8.1/raxml-ng_v0.8.1_linux_x86_64.zip -O /opt/raxml-ng/raxml-ng_v0.8.1_linux_x86_64.zip
     unzip raxml-ng_v0.8.1_linux_x86_64.zip
     rm raxml-ng_v0.8.1_linux_x86_64.zip
+- name: perl-bio-automatedannotation
+  version: 1.182770=pl526_0
+  template: flexi_conda_template.singularity
+  environment: |+
+    export PATH=/opt/infernal-1.1rc3-linux-intel-gcc/binaries:/opt/rnammer-1.2:/opt/tbl2asn:/opt/aragorn1.2.38:${PATH}
+  files: |+
+    rnammer-1.2.src.tar.Z /opt
+  conda_install: |+
+    apt-get update --quiet --assume-yes
+    apt-get upgrade --quiet --assume-yes
+    apt-get install wget build-essential --quiet --assume-yes
+    mkdir -p /opt/rnammer-1.2
+    mv /opt/rnammer-1.2.src.tar.Z /opt/rnammer-1.2/rnammer-1.2.src.tar.Z
+    cd /opt/rnammer-1.2
+    tar  zxvf rnammer-1.2.src.tar.Z
+    rm rnammer-1.2.src.tar.Z
+    sed -i 's/\/usr\/cbs\/bio\/src\/rnammer-1.2/\/opt\/rnammer-1.2/g' rnammer
+    sed -i 's/\/usr\/cbs\/bio\/bin\/linux64/\/opt\/conda\/bin/g' rnammer
+    sed -i 's/\/usr\/bin\/perl/\/opt\/conda\/bin\/perl/g' rnammer
+    chmod -R 755 /opt/rnammer-1.2
+    cd /opt
+    wget -q http://eddylab.org/infernal/infernal-1.1rc3-linux-intel-gcc.tar.gz -O /opt/infernal-1.1rc3-linux-intel-gcc.tar.gz
+    tar zxvf infernal-1.1rc3-linux-intel-gcc.tar.gz
+    rm infernal-1.1rc3-linux-intel-gcc.tar.gz
+    wget -q http://mbio-serv2.mbioekol.lu.se/ARAGORN/Downloads/aragorn1.2.38.tgz -O /opt/aragorn1.2.38.tgz
+    cd /opt
+    tar zxvf aragorn1.2.38.tgz
+    rm aragorn1.2.38.tgz
+    cd aragorn1.2.38
+    gcc -O3 -ffast-math -finline-functions -o aragorn aragorn1.2.38.c
+    chmod 755 /opt/aragorn1.2.38
+    chmod 755 /opt/aragorn1.2.38/aragorn
+    mkdir /opt/tbl2asn
+    wget -q ftp://ftp.ncbi.nih.gov/toolbox/ncbi_tools/converters/by_program/tbl2asn/linux64.tbl2asn.gz -O /opt/tbl2asn/tbl2asn.gz
+    gunzip /opt/tbl2asn/tbl2asn.gz
+    chmod 755 /opt/tbl2asn
+    chmod 755 /opt/tbl2asn/tbl2asn
+    /opt/conda/bin/conda install -c bioconda -c conda-forge -c r -y infernal=1.1.2=h470a237_1 perl-bio-automatedannotation=1.182770=pl526_0
 - name: piggy
   version: "1.4"
   template: generic_template.singularity
