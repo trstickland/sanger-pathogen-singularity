@@ -20,7 +20,10 @@ These are stored in sanger.yml
 
 The current implementation leverages conda as much as possible and uses Jinja2 templates to generate the singularity recipes   
 
-A secondary focus is to build a set of images required by our first farm4 user.  These are stored in gerry.yml
+A secondary focus is to build a set of images required by our first farm4 user.  These are stored in gerry.yml.  
+
+Alongside building singularity images, we offer the ability to create bash functions to simplify the execution.  Instead of calling ```singularity exec <image> <executable> <parameters>``` the bash function allows the user to simply call ```<executable> <parameters>```
+
 ## Building the images
 ### Requirements
 The following must be available:
@@ -28,11 +31,15 @@ The following must be available:
    * vagrant vbguest plugin: ``` vagrant plugin install vagrant-vbguest ```
 
 ### Running under vagrant
-The below command will build a box with all dependencies required to build images.  It will then build images for each of the required software
+The below command will build a box with all dependencies required to build images.
 ```
 vagrant up
 vagrant ssh
 cd sanger-pathogen-singularity
+```
+
+To build images, the command is
+```
 ./build_images.py <definition file.yml> [software to build]
 ```
 
@@ -45,6 +52,22 @@ To build beast2 and samtools for gerry
 ```
 ./build_images.py gerry.yml beast2 samtools
 ```   
+
+
+To generate bash function, the command is
+```
+./build_functions.py <definition file.yml> [software to build the function for]
+```
+
+Examples:
+To build all functions for gerry
+```
+./build_functions.py gerry.yml
+```
+To build functions for beast2 and samtools for gerry
+```
+./build_functions.py gerry.yml beast2 samtools
+```
 
 ## License
 sanger-pathogen-singularity is free software, licensed under [GPLv3](https://github.com/seretol/sanger-pathogen-singularity/blob/master/LICENSE).
