@@ -21,13 +21,6 @@
     wget -q https://github.com/amkozlov/raxml-ng/releases/download/0.8.1/raxml-ng_v0.8.1_linux_x86_64.zip -O /opt/raxml-ng/raxml-ng_v0.8.1_linux_x86_64.zip
     unzip raxml-ng_v0.8.1_linux_x86_64.zip
     rm raxml-ng_v0.8.1_linux_x86_64.zip
-- name: perl-bio-automatedannotation
-  version: 1.182770=pl526_0
-  template: flexi_conda_template.singularity
-  functions:
-  - annotate_bacteria
-  - gene_name_occurances
-  - parse_genes_from_gffs
 - name: bio-path-find
   version: 0.12.2
   functions:
