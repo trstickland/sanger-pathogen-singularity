@@ -1,0 +1,5 @@
+{{function}} () {
+  singularity exec /software/pathogen/images/{{image}} {{executable}} "$@"
+}
+
+
