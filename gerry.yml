@@ -1,17 +1,20 @@
 - name: iqtree
   version: 1.6.10=he860b03_0
   template: conda_template.singularity
+  functions:
+  - iqtree
 - name: raxml-ng
   version: 0.8.1
   template: generic_template.singularity
+  functions:
+  - raxml-ng
   docker_image: ubuntu:18.04
   environment: |+
     export PATH=/opt/raxml-ng:${PATH}
   install: |+
     apt-get update --quiet --assume-yes
     apt-get upgrade --quiet --assume-yes
-    apt-get install --quiet --assume-yes zip
-    apt-get install --quiet --assume-yes wget
+    apt-get install --quiet --assume-yes zip wget
     mkdir /opt/raxml-ng
     chmod 755 /opt/raxml-ng
     cd /opt/raxml-ng
@@ -21,6 +24,61 @@
 - name: perl-bio-automatedannotation
   version: 1.182770=pl526_0
   template: flexi_conda_template.singularity
+  functions:
+  - annotate_bacteria
+  - gene_name_occurances
+  - parse_genes_from_gffs
+- name: bio-path-find
+  version: 0.12.2
+  functions:
+  - pf
+  template: generic_template.singularity
+  docker_image: ubuntu:18.04
+  environment: |+
+          export PATH="/opt/bio-sequencescape-schema/bin:/opt/bio-track-schema/bin:/opt/bio-metagenomics/bin:/opt/bio-path-find/bin:/opt/kraken/:${PATH}"
+          export PERL5LIB="/opt/bio-sequencescape-schema/lib:/opt/bio-track-schema/lib:/opt/bio-metagenomics/lib:/opt/bio-path-find/lib:/usr/share/perl5:/usr/local/lib/x86_64-linux-gnu/perl/5.24.1/:${PERL5LIB}"
+  install: |+
+    apt-get update --quiet --assume-yes
+    apt-get upgrade --quiet --assume-yes
+    apt-get install --quiet --assume-yes default-libmysqlclient-dev git zip wget build-essential cpanminus libxml2-dev libexpat1-dev libgd-dev libssl-dev libdb-dev
+    cpanm --notest Module::Install
+    cpanm --notest DateTime
+    cpanm --notest Test::Script::Run
+    cpanm --notest DBD::mysql
+    cpanm --notest Dist::Zilla
+    mkdir -p /opt
+    wget -q https://github.com/DerrickWood/kraken/archive/v1.0.zip -O /opt/krakenv1.0.zip
+    cd /opt
+    mkdir kraken
+    unzip krakenv1.0.zip
+    rm krakenv1.0.zip
+    cd kraken-1.0/
+    ./install_kraken.sh /opt/kraken
+    chmod -R 755 /opt/kraken
+    export PATH=/opt/kraken/:/opt/conda/bin:${PATH}
+    git clone https://github.com/sanger-pathogens/Bio-Track-Schema.git /opt/bio-track-schema
+    cd /opt/bio-track-schema
+    dzil authordeps --missing | cpanm  --notest
+    dzil listdeps --missing | cpanm  --notest
+    git clone https://github.com/sanger-pathogens/Bio-Sequencescape-Schema.git /opt/bio-sequencescape-schema
+    cd /opt/bio-sequencescape-schema
+    dzil authordeps --missing | cpanm  --notest
+    dzil listdeps --missing | cpanm  --notest 
+    git clone https://github.com/sanger-pathogens/Bio-Metagenomics.git /opt/bio-metagenomics
+    cd /opt/bio-metagenomics
+    dzil authordeps --missing | cpanm  --notest
+    dzil listdeps --missing | cpanm  --notest
+    git clone https://github.com/sanger-pathogens/Bio-Path-Find.git /opt/bio-path-find
+    cd /opt/bio-path-find
+    dzil authordeps --missing | cpanm  --notest
+    dzil listdeps --missing | grep -v Bio::Metagenomics | cpanm  --notest
+- name: perl-bio-automatedannotation
+  version: 1.182770=pl526_0
+  template: flexi_conda_template.singularity
+  functions:
+  - annotate_bacteria
+  - gene_name_occurances
+  - parse_genes_from_gffs
   environment: |+
     export PATH=/opt/infernal-1.1rc3-linux-intel-gcc/binaries:/opt/rnammer-1.2:/opt/tbl2asn:/opt/aragorn1.2.38:${PATH}
   files: |+
@@ -59,6 +117,8 @@
 - name: piggy
   version: "1.4"
   template: generic_template.singularity
+  functions:
+  - piggy
   docker_image: ubuntu:18.04
   environment: |+
     export PATH=/opt/piggy-1.4:/opt/piggy-1.4/bin:${PATH}
@@ -76,82 +136,234 @@
 - name: fasttree
   version: 2.1.10=h470a237_2
   template: conda_template.singularity
+  functions:
+  - FastTree
 - name: beast
   version: 1.8.4=0
   template: conda_template.singularity
+  functions:
+  - beauti
+  - beast
   preinstall: |+
     apt-get install -q -y libxtst6 libfontconfig1 xauth
 - name: beast2
   version: 2.5.0=hf1b8bbb_0
   template: conda_template.singularity
+  functions:
+  - beauti2=beauti
+  - beast2=beast
   preinstall: |+
     apt-get install -q -y libxtst6 libfontconfig1 xauth
 - name: minimap2
   version: 2.16=h84994c4_1
   template: conda_template.singularity
+  functions:
+  - minimap2
 - name: canu
   version: 1.8=pl526h470a237_0
   template: conda_template.singularity
+  functions:
+  - canu
 - name: clonalframeml
   version: 1.11=h470a237_1
   template: conda_template.singularity
+  functions:
+  - ClonalFrameML  
 - name: gubbins
   version: 2.3.4=py36ha92aebf_0
   template: conda_template.singularity
+  functions:
+  - run_gubbins.py
 - name: samtools
   version: 1.9=h91753b0_8
   template: conda_template.singularity
+  functions:
+  - samtools
 - name: bwa
   version: 0.7.17=pl5.22.0_2
   template: conda_template.singularity
+  functions:
+  - bwa
 - name: prank
   version: v.170427=h6bb024c_2
   template: conda_template.singularity
+  functions:
+  - prank
 - name: hmmer
   version: 3.2.1=hfc679d8_0
   template: conda_template.singularity
+  functions:
+  - alimask
+  - hmmalign
+  - hmmbuild
+  - hmmconvert
+  - hmmemit
+  - hmmfetch
+  - hmmlogo
+  - hmmpgmd
+  - hmmpress
+  - hmmscan
+  - hmmsearch
+  - hmmsim
+  - hmmstat
+  - jackhmmer
+  - makehmmerdb
+  - nhmmer
+  - nhmmscan
+  - phmmer
+  - esl-afetch
+  - esl-alimanip
+  - esl-alimap
+  - esl-alimask
+  - esl-alimerge
+  - esl-alipid
+  - esl-alirev
+  - esl-alistat
+  - esl-compalign
+  - esl-compstruct
+  - esl-construct
+  - esl-histplot
+  - esl-mask
+  - esl-reformat
+  - esl-selectn
+  - esl-seqrange
+  - esl-seqstat
+  - esl-sfetch
+  - esl-shuffle
+  - esl-ssdraw
+  - esl-translate
+  - esl-weight
 - name: smalt
   version: 0.7.6=1
   template: conda_template.singularity
+  functions:
+  - smalt
 - name: spades
   version: 3.13.0=0
   template: conda_template.singularity
+  functions:
+  - spades.py
+  - metaspades.py
+  - plasmidspades.py
+  - rnaspades.py
+  - truspades.py
+  - spades-core
+  - spades-gbuilder
+  - spades-gmapper
+  - spades-kmercount
+  - spades-hammer
+  - spades-ionhammer
+  - spades-bwa
+  - spades-corrector-core
+  - spades-truseq-scfcorrection
 - name: ska
   version: 1.0=he860b03_0
   template: conda_template.singularity
+  functions:
+  - ska
 - name: srst2
   version: 0.2.0=py27_3
   template: conda_template.singularity
+  functions:
+  - srst2
+  - getmlst.py
 - name: poppunk
   version: 1.1.5=py_0
   template: conda_template.singularity
+  functions:
+  - poppunk
 - name: pyseer
   version: 1.2.0=py_0
   template: conda_template.singularity
+  functions:
+  - count_patterns.py
+  - phylogeny_distance.py
+  - qq_plot.py
+  - save_model.py
+  - summarise_annotations.py
 - name: mafft
   version: 7.407=1
   template: conda_template.singularity
+  functions:
+  - mafft
+  - linsi
+  - ginsi
+  - einsi
+  - fftnsi
+  - fftns
+  - nwns
+  - nwnsi
+  - mafft-profile
 - name: blast
   version: 2.7.1=h96bfa4b_5
   template: conda_template.singularity
+  functions:
+  - blastdb_aliastool
+  - blastdbcheck
+  - blastdbcmd
+  - blast_formatter
+  - blastn
+  - blastp
+  - blastx
+  - convert2blastmask
+  - deltablast
+  - dustmasker
+  - legacy_blast.pl
+  - makeblastdb
+  - makembindex
+  - makeprofiledb
+  - psiblast
+  - rpsblast
+  - rpstblastn
+  - segmasker
+  - tblastn
+  - tblastx
+  - update_blastdb.pl
+  - windowmasker
 - name: snp-sites
   version: 2.4.1=ha92aebf_0
   template: conda_template.singularity
+  functions:
+  - snp-sites
 - name: seroba
   version: 1.0.0=py36_1
   template: conda_template.singularity
+  functions:
+  - seroba
 - name: roary
   version: 3.12.0=pl526h470a237_1
   template: conda_template.singularity
+  functions:
+  - create_pan_genome
+  - create_pan_genome_plots.R
+  - extract_proteome_from_gff
+  - iterative_cdhit
+  - pan_genome_assembly_statistics
+  - pan_genome_core_alignment
+  - pan_genome_post_analysis
+  - pan_genome_reorder_spreadsheet
+  - parallel_all_against_all_blastp
+  - protein_alignment_from_nucleotides
+  - query_pan_genome
+  - roary
+  - roary-create_pan_genome_plots.R
+  - roary-pan_genome_reorder_spreadsheet
+  - roary-query_pan_genome
+  - roary-unique_genes_per_sample
+  - transfer_annotation_to_groups
 - name: perl-bio-mlst-check
   version: 2.1.1706216
   template: generic_template.singularity
+  functions:
+  - get_sequence_type
   docker_image: sangerpathogens/mlst_check
   environment: |+
     export MLST_DATABASES=/MLST_databases
 - name: sling
   version: fe8f273
   template: flexi_conda_template.singularity
+  functions:
+  - sling
   conda_install: |+
     /opt/conda/bin/conda install -y python=2.7.13=hfff3488_13
     /opt/conda/bin/conda install -y pip=19.0.3=py27_0
@@ -161,5 +373,7 @@
 - name: pairsnp
   version: 0.0.1=h6dfff17_0
   template: flexi_conda_template.singularity
+  functions:
+  - pairsnp
   conda_install: |+
     /opt/conda/bin/conda install -y -c gtonkinhill -c bioconda -c conda-forge pairsnp=0.0.1=h6dfff17_0
