@@ -1,0 +1,681 @@
+export SINGULARITY_BINDPATH="/software,/lustre,/nfs,/nfs/pathogen/user-tracking:/tracking"
+export PF_CONFIG_FILE=/software/pathogen/etc/pf.conf
+
+iqtree () {
+  singularity exec /software/pathogen/images/iqtree-1.6.10=he860b03_0.simg iqtree "$@"
+}
+
+
+raxml-ng () {
+  singularity exec /software/pathogen/images/raxml-ng-0.8.1.simg raxml-ng "$@"
+}
+
+
+pf () {
+  singularity exec /software/pathogen/images/bio-path-find-0.12.2.simg pf "$@"
+}
+
+
+annotate_bacteria () {
+  singularity exec /software/pathogen/images/perl-bio-automatedannotation-1.182770=pl526_0.simg annotate_bacteria "$@"
+}
+
+
+gene_name_occurances () {
+  singularity exec /software/pathogen/images/perl-bio-automatedannotation-1.182770=pl526_0.simg gene_name_occurances "$@"
+}
+
+
+parse_genes_from_gffs () {
+  singularity exec /software/pathogen/images/perl-bio-automatedannotation-1.182770=pl526_0.simg parse_genes_from_gffs "$@"
+}
+
+
+piggy () {
+  singularity exec /software/pathogen/images/piggy-1.4.simg piggy "$@"
+}
+
+
+FastTree () {
+  singularity exec /software/pathogen/images/fasttree-2.1.10=h470a237_2.simg FastTree "$@"
+}
+
+
+beauti () {
+  singularity exec /software/pathogen/images/beast-1.8.4=0.simg beauti "$@"
+}
+
+
+beast () {
+  singularity exec /software/pathogen/images/beast-1.8.4=0.simg beast "$@"
+}
+
+
+beauti2 () {
+  singularity exec /software/pathogen/images/beast2-2.5.0=hf1b8bbb_0.simg beauti "$@"
+}
+
+
+beast2 () {
+  singularity exec /software/pathogen/images/beast2-2.5.0=hf1b8bbb_0.simg beast "$@"
+}
+
+
+minimap2 () {
+  singularity exec /software/pathogen/images/minimap2-2.16=h84994c4_1.simg minimap2 "$@"
+}
+
+
+canu () {
+  singularity exec /software/pathogen/images/canu-1.8=pl526h470a237_0.simg canu "$@"
+}
+
+
+ClonalFrameML () {
+  singularity exec /software/pathogen/images/clonalframeml-1.11=h470a237_1.simg ClonalFrameML "$@"
+}
+
+
+run_gubbins.py () {
+  singularity exec /software/pathogen/images/gubbins-2.3.4=py36ha92aebf_0.simg run_gubbins.py "$@"
+}
+
+
+samtools () {
+  singularity exec /software/pathogen/images/samtools-1.9=h91753b0_8.simg samtools "$@"
+}
+
+
+bwa () {
+  singularity exec /software/pathogen/images/bwa-0.7.17=pl5.22.0_2.simg bwa "$@"
+}
+
+
+prank () {
+  singularity exec /software/pathogen/images/prank-v.170427=h6bb024c_2.simg prank "$@"
+}
+
+
+alimask () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg alimask "$@"
+}
+
+
+hmmalign () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmalign "$@"
+}
+
+
+hmmbuild () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmbuild "$@"
+}
+
+
+hmmconvert () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmconvert "$@"
+}
+
+
+hmmemit () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmemit "$@"
+}
+
+
+hmmfetch () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmfetch "$@"
+}
+
+
+hmmlogo () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmlogo "$@"
+}
+
+
+hmmpgmd () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmpgmd "$@"
+}
+
+
+hmmpress () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmpress "$@"
+}
+
+
+hmmscan () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmscan "$@"
+}
+
+
+hmmsearch () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmsearch "$@"
+}
+
+
+hmmsim () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmsim "$@"
+}
+
+
+hmmstat () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg hmmstat "$@"
+}
+
+
+jackhmmer () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg jackhmmer "$@"
+}
+
+
+makehmmerdb () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg makehmmerdb "$@"
+}
+
+
+nhmmer () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg nhmmer "$@"
+}
+
+
+nhmmscan () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg nhmmscan "$@"
+}
+
+
+phmmer () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg phmmer "$@"
+}
+
+
+esl-afetch () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-afetch "$@"
+}
+
+
+esl-alimanip () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-alimanip "$@"
+}
+
+
+esl-alimap () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-alimap "$@"
+}
+
+
+esl-alimask () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-alimask "$@"
+}
+
+
+esl-alimerge () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-alimerge "$@"
+}
+
+
+esl-alipid () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-alipid "$@"
+}
+
+
+esl-alirev () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-alirev "$@"
+}
+
+
+esl-alistat () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-alistat "$@"
+}
+
+
+esl-compalign () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-compalign "$@"
+}
+
+
+esl-compstruct () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-compstruct "$@"
+}
+
+
+esl-construct () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-construct "$@"
+}
+
+
+esl-histplot () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-histplot "$@"
+}
+
+
+esl-mask () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-mask "$@"
+}
+
+
+esl-reformat () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-reformat "$@"
+}
+
+
+esl-selectn () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-selectn "$@"
+}
+
+
+esl-seqrange () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-seqrange "$@"
+}
+
+
+esl-seqstat () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-seqstat "$@"
+}
+
+
+esl-sfetch () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-sfetch "$@"
+}
+
+
+esl-shuffle () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-shuffle "$@"
+}
+
+
+esl-ssdraw () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-ssdraw "$@"
+}
+
+
+esl-translate () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-translate "$@"
+}
+
+
+esl-weight () {
+  singularity exec /software/pathogen/images/hmmer-3.2.1=hfc679d8_0.simg esl-weight "$@"
+}
+
+
+smalt () {
+  singularity exec /software/pathogen/images/smalt-0.7.6=1.simg smalt "$@"
+}
+
+
+spades.py () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades.py "$@"
+}
+
+
+metaspades.py () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg metaspades.py "$@"
+}
+
+
+plasmidspades.py () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg plasmidspades.py "$@"
+}
+
+
+rnaspades.py () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg rnaspades.py "$@"
+}
+
+
+truspades.py () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg truspades.py "$@"
+}
+
+
+spades-core () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-core "$@"
+}
+
+
+spades-gbuilder () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-gbuilder "$@"
+}
+
+
+spades-gmapper () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-gmapper "$@"
+}
+
+
+spades-kmercount () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-kmercount "$@"
+}
+
+
+spades-hammer () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-hammer "$@"
+}
+
+
+spades-ionhammer () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-ionhammer "$@"
+}
+
+
+spades-bwa () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-bwa "$@"
+}
+
+
+spades-corrector-core () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-corrector-core "$@"
+}
+
+
+spades-truseq-scfcorrection () {
+  singularity exec /software/pathogen/images/spades-3.13.0=0.simg spades-truseq-scfcorrection "$@"
+}
+
+
+ska () {
+  singularity exec /software/pathogen/images/ska-1.0=he860b03_0.simg ska "$@"
+}
+
+
+srst2 () {
+  singularity exec /software/pathogen/images/srst2-0.2.0=py27_3.simg srst2 "$@"
+}
+
+
+getmlst.py () {
+  singularity exec /software/pathogen/images/srst2-0.2.0=py27_3.simg getmlst.py "$@"
+}
+
+
+poppunk () {
+  singularity exec /software/pathogen/images/poppunk-1.1.5=py_0.simg poppunk "$@"
+}
+
+
+count_patterns.py () {
+  singularity exec /software/pathogen/images/pyseer-1.2.0=py_0.simg count_patterns.py "$@"
+}
+
+
+phylogeny_distance.py () {
+  singularity exec /software/pathogen/images/pyseer-1.2.0=py_0.simg phylogeny_distance.py "$@"
+}
+
+
+qq_plot.py () {
+  singularity exec /software/pathogen/images/pyseer-1.2.0=py_0.simg qq_plot.py "$@"
+}
+
+
+save_model.py () {
+  singularity exec /software/pathogen/images/pyseer-1.2.0=py_0.simg save_model.py "$@"
+}
+
+
+summarise_annotations.py () {
+  singularity exec /software/pathogen/images/pyseer-1.2.0=py_0.simg summarise_annotations.py "$@"
+}
+
+
+mafft () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg mafft "$@"
+}
+
+
+linsi () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg linsi "$@"
+}
+
+
+ginsi () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg ginsi "$@"
+}
+
+
+einsi () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg einsi "$@"
+}
+
+
+fftnsi () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg fftnsi "$@"
+}
+
+
+fftns () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg fftns "$@"
+}
+
+
+nwns () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg nwns "$@"
+}
+
+
+nwnsi () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg nwnsi "$@"
+}
+
+
+mafft-profile () {
+  singularity exec /software/pathogen/images/mafft-7.407=1.simg mafft-profile "$@"
+}
+
+
+blastdb_aliastool () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg blastdb_aliastool "$@"
+}
+
+
+blastdbcheck () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg blastdbcheck "$@"
+}
+
+
+blastdbcmd () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg blastdbcmd "$@"
+}
+
+
+blast_formatter () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg blast_formatter "$@"
+}
+
+
+blastn () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg blastn "$@"
+}
+
+
+blastp () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg blastp "$@"
+}
+
+
+blastx () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg blastx "$@"
+}
+
+
+convert2blastmask () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg convert2blastmask "$@"
+}
+
+
+deltablast () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg deltablast "$@"
+}
+
+
+dustmasker () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg dustmasker "$@"
+}
+
+
+legacy_blast.pl () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg legacy_blast.pl "$@"
+}
+
+
+makeblastdb () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg makeblastdb "$@"
+}
+
+
+makembindex () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg makembindex "$@"
+}
+
+
+makeprofiledb () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg makeprofiledb "$@"
+}
+
+
+psiblast () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg psiblast "$@"
+}
+
+
+rpsblast () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg rpsblast "$@"
+}
+
+
+rpstblastn () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg rpstblastn "$@"
+}
+
+
+segmasker () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg segmasker "$@"
+}
+
+
+tblastn () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg tblastn "$@"
+}
+
+
+tblastx () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg tblastx "$@"
+}
+
+
+update_blastdb.pl () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg update_blastdb.pl "$@"
+}
+
+
+windowmasker () {
+  singularity exec /software/pathogen/images/blast-2.7.1=h96bfa4b_5.simg windowmasker "$@"
+}
+
+
+snp-sites () {
+  singularity exec /software/pathogen/images/snp-sites-2.4.1=ha92aebf_0.simg snp-sites "$@"
+}
+
+
+seroba () {
+  singularity exec /software/pathogen/images/seroba-1.0.0=py36_1.simg seroba "$@"
+}
+
+
+create_pan_genome () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg create_pan_genome "$@"
+}
+
+
+create_pan_genome_plots.R () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg create_pan_genome_plots.R "$@"
+}
+
+
+extract_proteome_from_gff () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg extract_proteome_from_gff "$@"
+}
+
+
+iterative_cdhit () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg iterative_cdhit "$@"
+}
+
+
+pan_genome_assembly_statistics () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg pan_genome_assembly_statistics "$@"
+}
+
+
+pan_genome_core_alignment () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg pan_genome_core_alignment "$@"
+}
+
+
+pan_genome_post_analysis () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg pan_genome_post_analysis "$@"
+}
+
+
+pan_genome_reorder_spreadsheet () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg pan_genome_reorder_spreadsheet "$@"
+}
+
+
+parallel_all_against_all_blastp () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg parallel_all_against_all_blastp "$@"
+}
+
+
+protein_alignment_from_nucleotides () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg protein_alignment_from_nucleotides "$@"
+}
+
+
+query_pan_genome () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg query_pan_genome "$@"
+}
+
+
+roary () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg roary "$@"
+}
+
+
+roary-create_pan_genome_plots.R () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg roary-create_pan_genome_plots.R "$@"
+}
+
+
+roary-pan_genome_reorder_spreadsheet () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg roary-pan_genome_reorder_spreadsheet "$@"
+}
+
+
+roary-query_pan_genome () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg roary-query_pan_genome "$@"
+}
+
+
+roary-unique_genes_per_sample () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg roary-unique_genes_per_sample "$@"
+}
+
+
+transfer_annotation_to_groups () {
+  singularity exec /software/pathogen/images/roary-3.12.0=pl526h470a237_1.simg transfer_annotation_to_groups "$@"
+}
+
+
+get_sequence_type () {
+  singularity exec /software/pathogen/images/perl-bio-mlst-check-2.1.1706216.simg get_sequence_type "$@"
+}
+
+
+sling () {
+  singularity exec /software/pathogen/images/sling-fe8f273.simg sling "$@"
+}
+
+
+pairsnp () {
+  singularity exec /software/pathogen/images/pairsnp-0.0.1=h6dfff17_0.simg pairsnp "$@"
+}
