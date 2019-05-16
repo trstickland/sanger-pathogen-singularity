@@ -1,0 +1,16 @@
+- name: LEfSe
+  version: '1.7'
+  template: generic_template.singularity
+  functions:
+  - format_input
+  - lefse2circlader
+  - plot_cladogram
+  - plot_features
+  - plot_res
+  - qiime2lefse
+  - run_lefse
+  docker_image: biobakery/lefse
+  environment: |+
+    export LC_CTYPE="en_US.utf8"
+    export LC_MESSAGES="en_US.utf8"
+    export LC_ALL="en_US.utf8"
